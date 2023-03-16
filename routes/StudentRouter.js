@@ -7,4 +7,4 @@ router.post('/register', controller.CreateStudent);
 router.put('/:id', controller.UpdateStudentById);
 router.delete('/:id', controller.DeleteStudentById);
 
-module.exports = router;
+module.exports = router; 

@@ -1,32 +1,13 @@
 const { Course, Student, Grade } = require('../models');
 
-//this code was working if no courses are assigned to a student.
-// const GetAllCourses = async (req, res) => {
-// 	try {
-// 		const courses = await Course.findAll({
-// 			//Marked out because of 202 error. Works without include
-// 			include: Student [
-// 				{
-// 					model: Student,
-// 					as: 'student_list',
-// 					through: { attibutes: ['models.Grade'] }
-// 			}]
-// 		});
-// 		res.send(courses);
-// 	} catch (err) {
-// 		throw err;
-// 	}
-// };
-
-// this code get the courses assigned to students.
 const GetAllCourses = async (req, res) => {
 	try {
 	  const courses = await Course.findAll({
 		include: [
 		  {
 			model: Student,
-			as: 'students',
-			through: { attributes: ['grade'] }
+			as: 'student_list',
+			through: { attributes: ['score'] }
 		  }
 		]
 	  });
@@ -40,11 +21,11 @@ const GetCourseById = async (req, res) => {
 	try {
 		const courseId = parseInt(req.params.id);
 		const course = await Course.findByPk(courseId, {
-			include: Grade [
+			include: [
 				{
 					model: Student,
 					as: 'student_list',
-					through: { attributes: ['models.Grade'] }
+					through: { attributes: ['score'] }
 				}
 			]
 		});

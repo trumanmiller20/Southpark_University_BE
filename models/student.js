@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //try 'hasMany' if time
       Student.belongsToMany(models.Course,  {
          through: models.Grade,
          foreignKey: 'studentId',

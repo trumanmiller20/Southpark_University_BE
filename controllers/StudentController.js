@@ -6,8 +6,8 @@ const GetAllStudents = async (req, res) => {
 			include: [
 				{
 					model: Course,
-					as: 'courses',
-					through: { attributes: ['grade'] }
+					as: 'grade_list',
+					through: { attributes: ['score'] }
 				}
 			]
 		});
@@ -24,8 +24,8 @@ const GetStudentById = async (req, res) => {
 			include: [
 				{
 					model: Course,
-					as: 'courses',
-					through: { attributes: ['grade'] }
+					as: 'grade_list',
+					through: { attributes: ['score'] }
 				}
 			]
 		});

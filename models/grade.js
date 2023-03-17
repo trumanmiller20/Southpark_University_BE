@@ -10,9 +10,20 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
-    
-    }
+    //   // define association here
+    //     Grade.belongsTo(models.Student, {
+    //       foreignKey: 'studentId',
+    //       as: 'student_list',
+    //       onDelete: 'CASCADE',
+    //       onUpdate: 'CASCADE'
+    //     })
+    //     Grade.belongsTo(models.Grade, {
+    //       foreignKey: 'gradeId',
+    //       as: 'grade_list',
+    //       onDelete: 'CASCADE',
+    //       onUpdate: 'CASCADE'
+    //     })
+      }
   }
   Grade.init({
     score: DataTypes.INTEGER,

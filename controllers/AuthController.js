@@ -21,7 +21,7 @@ const Login = async (req, res) => {
     });
    
     let matched = await middleware.comparePassword(
-      user.passwordDigest,
+      user.password,
       req.body.password
     );
 

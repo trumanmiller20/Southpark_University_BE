@@ -14,10 +14,8 @@ const GetAll = async (req, res) => {
 
 const EnrollStudentInCourse = async (req, res) => {
 	try {
-		const { studentId, courseId, score } = req.body;
+    const { score, studentId, courseId } = req.body;
 		const grade = await Grade.create({
-      attributes: ['id', 'score', 'studentId', 'courseId', 'createdAt', 'updatedAt'],
-      raw: true,
 			studentId: parseInt(studentId),
 			courseId: parseInt(courseId),
 			score: parseInt(score)
@@ -30,7 +28,8 @@ const EnrollStudentInCourse = async (req, res) => {
 
 const FetchCoursesByStudentId = async (req, res) => {
 	try {
-		const studentId = parseInt(req.params.id);
+    const studentId = parseInt(req.params.id);
+    console.log(req.params.id)
 		const courses = await Grade.findAll({
 			where: { studentId: studentId }
 		});
